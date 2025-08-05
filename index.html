@@ -50,36 +50,20 @@
     <p>&copy; 2025 Dhanisha Tech</p>
   </footer>
 
-  <!-- ✅ Final EmailJS + Auto-reply + Google Sheet -->
+  <!-- ✅ Final EmailJS + Auto-reply + Google Sheet (Fixed Order) -->
   <script>
     const form = document.getElementById('contact-form');
 
     form.addEventListener('submit', function (event) {
       event.preventDefault();
 
-      // ✅ Send to Dhanisha Tech
-      emailjs.sendForm('service_178rdz5', 'template_yf0tfur', this)
-        .then(function () {
-          alert('✅ Message sent successfully!');
-          form.reset();
-        }, function (error) {
-          alert('❌ Failed to send message: ' + JSON.stringify(error));
-        });
-
-      // ✅ Auto-reply
       const formData = new FormData(form);
       const userEmail = formData.get("email");
       const userName = formData.get("name");
 
-      emailjs.send("service_178rdz5", "template_m6hsfmr", {
-        email: userEmail,
-        to_name: userName
-      });
-
-      // ✅ Google Sheet
+      // ✅ Google Sheet (send before reset)
       const encodedData = new URLSearchParams(formData);
-
-      fetch("https://script.google.com/macros/s/AKfycbyMeQG40RBi7nbgRgwoP0u5V3edFePLyZtwU32jrUA8dLQjb8z0opcvPjTh4YIwTxO/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbyMeQG4ORBi7nbgRgwroP0u5V3edFePLyZtwU32jrUA8dLQjb8z0opcvPjTh4YIwTxO/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
@@ -88,6 +72,21 @@
       })
       .then(response => console.log("✅ Google Sheet Updated"))
       .catch(error => console.error("❌ Failed to update Google Sheet", error));
+
+      // ✅ Send to Dhanisha Tech
+      emailjs.sendForm('service_178rdz5', 'template_yf0tfur', form)
+        .then(function () {
+          alert('✅ Message sent successfully!');
+          form.reset(); // ✅ Reset after all requests complete
+        }, function (error) {
+          alert('❌ Failed to send message: ' + JSON.stringify(error));
+        });
+
+      // ✅ Auto-reply to user
+      emailjs.send("service_178rdz5", "template_m6hsfmr", {
+        email: userEmail,
+        to_name: userName
+      });
     });
   </script>
 </body>
