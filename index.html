@@ -55,39 +55,40 @@
     const form = document.getElementById('contact-form');
 
     form.addEventListener('submit', function (event) {
-      event.preventDefault();
+  event.preventDefault();
 
-      const formData = new FormData(form);
-      const userEmail = formData.get("email");
-      const userName = formData.get("name");
+  const formData = new FormData(form);
+  const userEmail = formData.get("email");
+  const userName = formData.get("name");
 
-      // ✅ Google Sheet (send before reset)
-      const encodedData = new URLSearchParams(formData);
-      fetch("https://script.google.com/macros/s/AKfycbyMeQG4ORBi7nbgRgwroP0u5V3edFePLyZtwU32jrUA8dLQjb8z0opcvPjTh4YIwTxO/exec", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: encodedData.toString()
-      })
-      .then(response => console.log("✅ Google Sheet Updated"))
-      .catch(error => console.error("❌ Failed to update Google Sheet", error));
+  // ✅ Google Sheet fetch (first!)
+  const encodedData = new URLSearchParams(formData);
+  fetch("https://script.google.com/macros/s/AKfycbyMeQG4ORBi7nbgRgwroP0u5V3edFePLyZtwU32jrUA8dLQjb8z0opcvPjTh4YIwTxO/exec", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: encodedData.toString()
+  })
+  .then(res => res.text())
+  .then(txt => console.log("📄 Google Sheet Response:", txt))
+  .catch(err => console.error("❌ Google Sheet Error:", err));
 
-      // ✅ Send to Dhanisha Tech
-      emailjs.sendForm('service_178rdz5', 'template_yf0tfur', form)
-        .then(function () {
-          alert('✅ Message sent successfully!');
-          form.reset(); // ✅ Reset after all requests complete
-        }, function (error) {
-          alert('❌ Failed to send message: ' + JSON.stringify(error));
-        });
-
-      // ✅ Auto-reply to user
-      emailjs.send("service_178rdz5", "template_m6hsfmr", {
-        email: userEmail,
-        to_name: userName
-      });
+  // ✅ EmailJS Message
+  emailjs.sendForm('service_178rdz5', 'template_yf0tfur', form)
+    .then(function () {
+      alert('✅ Message sent successfully!');
+      form.reset();
+    }, function (error) {
+      alert('❌ Failed to send message: ' + JSON.stringify(error));
     });
+
+  // ✅ Auto-reply
+  emailjs.send("service_178rdz5", "template_m6hsfmr", {
+    email: userEmail,
+    to_name: userName
+  });
+});
   </script>
 </body>
 </html>
