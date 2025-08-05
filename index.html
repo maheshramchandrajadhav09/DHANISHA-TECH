@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dhanisha Tech</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ✅ EmailJS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("wBQsOirz81XONprz7"); // ✅ Verified Public Key
+    })();
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>Welcome to <span class="highlight">Dhanisha Tech</span></h1>
+  </header>
+
+  <main>
+    <p>We build Android Apps, Websites, and Desktop Software.</p>
+  </main>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>Feel free to message us on WhatsApp, Email, or via the form below.</p>
+
+    <div class="contact-buttons">
+      <a href="https://wa.me/919423131760" target="_blank">
+        <button>📱 WhatsApp Us</button>
+      </a>
+      <span> - </span>
+      <a href="mailto:dhanishatek@gmail.com?subject=Project%20Inquiry&body=Hello%20Dhanisha%20Tech,">
+        <button>📧 Email Us</button>
+      </a>
+    </div>
+
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="text" name="title" placeholder="Subject" required>
+      <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Dhanisha Tech</p>
+  </footer>
+
+  <!-- ✅ Final Script: EmailJS + Auto Reply + Google Sheet -->
+  <script>
+    const form = document.getElementById('contact-form');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      // ✅ EmailJS (send to Dhanisha)
+      emailjs.sendForm('service_2qpxmej', 'template_2pb5gsg', this)
+        .then(function () {
+          alert('✅ Message sent successfully!');
+          form.reset();
+        }, function (error) {
+          alert('❌ Failed to send message: ' + JSON.stringify(error));
+        });
+
+      // ✅ Auto-reply Email
+      const formData = new FormData(form);
+      const userEmail = formData.get("email");
+      const userName = formData.get("name");
+
+      emailjs.send("service_2qpxmej", "template_29cq4xr", {
+        to_email: userEmail,
+        to_name: userName
+      });
+
+      // ✅ Google Sheet Save
+      const encodedData = new URLSearchParams(formData);
+
+      fetch("https://script.google.com/macros/s/AKfycbzcQC_sQeAHbToHBaQBKjB1kYF5EQcdx_Z-SsLUvKt3lXGT3KIeC_jFOFCUOlKDSOSSNw/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: encodedData.toString()
+      })
+      .then(response => console.log("✅ Google Sheet Updated"))
+      .catch(error => console.error("❌ Failed to update Google Sheet", error));
+    });
+  </script>
+</body>
+</html>
