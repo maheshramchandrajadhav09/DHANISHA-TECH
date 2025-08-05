@@ -58,7 +58,7 @@
       event.preventDefault();
 
       // ✅ EmailJS (send to Dhanisha)
-      emailjs.sendForm('service_2qpxmej', 'template_2pb5gsg', this)
+      emailjs.sendForm('service_178rdz5', 'template_2pb5gsg', this)
         .then(function () {
           alert('✅ Message sent successfully!');
           form.reset();
@@ -71,11 +71,10 @@
       const userEmail = formData.get("email");
       const userName = formData.get("name");
 
-      emailjs.send("service_2qpxmej", "template_29cq4xr", {
+      emailjs.send("service_178rdz5", "template_29cq4xr", {
         to_email: userEmail,
         to_name: userName
       });
-
       // ✅ Google Sheet Save
       const encodedData = new URLSearchParams(formData);
 
