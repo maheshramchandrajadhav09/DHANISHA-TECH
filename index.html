@@ -9,7 +9,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>
     (function () {
-      emailjs.init("wBQsOirz81XONprz7"); // ✅ Verified Public Key
+      emailjs.init("C-9BlXYsILjx5Qmm7"); // ✅ Your Public Key
     })();
   </script>
 </head>
@@ -50,15 +50,15 @@
     <p>&copy; 2025 Dhanisha Tech</p>
   </footer>
 
-  <!-- ✅ Final Script: EmailJS + Auto Reply + Google Sheet -->
+  <!-- ✅ Final EmailJS + Auto-reply + Google Sheet -->
   <script>
     const form = document.getElementById('contact-form');
 
     form.addEventListener('submit', function (event) {
       event.preventDefault();
 
-      // ✅ EmailJS (send to Dhanisha)
-      emailjs.sendForm('service_178rdz5', 'template_2pb5gsg', this)
+      // ✅ Send to Dhanisha Tech
+      emailjs.sendForm('service_178rdz5', 'template_yf0tfur', this)
         .then(function () {
           alert('✅ Message sent successfully!');
           form.reset();
@@ -66,16 +66,17 @@
           alert('❌ Failed to send message: ' + JSON.stringify(error));
         });
 
-      // ✅ Auto-reply Email
+      // ✅ Auto-reply
       const formData = new FormData(form);
       const userEmail = formData.get("email");
       const userName = formData.get("name");
 
-      emailjs.send("service_178rdz5", "template_29cq4xr", {
-        to_email: userEmail,
+      emailjs.send("service_178rdz5", "template_m6hsfmr", {
+        email: userEmail,
         to_name: userName
       });
-      // ✅ Google Sheet Save
+
+      // ✅ Google Sheet
       const encodedData = new URLSearchParams(formData);
 
       fetch("https://script.google.com/macros/s/AKfycbyMeQG40RBi7nbgRgwoP0u5V3edFePLyZtwU32jrUA8dLQjb8z0opcvPjTh4YIwTxO/exec", {
