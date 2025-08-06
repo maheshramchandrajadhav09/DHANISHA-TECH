@@ -2,46 +2,49 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Dhanisha Tech – Home</title>
+  <title>Contact Us – Dhanisha Tech</title>
   <link rel="stylesheet" href="css/style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-</head>
 
+  <!-- 🔐 Role protection script -->
+  <script src="js/auth-check.js"></script>
+  <script>requireRole("Client");</script> <!-- ✅ Only Client can access -->
+</head>
 <body>
 
   <!-- ✅ Navbar -->
   <nav class="navbar">
     <div class="logo">🌀 Dhanisha Tech</div>
     <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="portfolio.html">Portfolio</a></li>
       <li><a href="offers.html">Offers</a></li>
       <li><a href="pricing.html">Pricing</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="login.html" class="login-btn">🔐 Login</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="#" class="login-btn" onclick="logout()">🚪 Logout</a></li>
     </ul>
   </nav>
 
-  <!-- ✅ Hero Section -->
-  <header class="hero">
-    <h1>Smart Software Solutions for <span class="highlight">Android, Web & SaaS</span></h1>
-    <p>We build, deliver, and support powerful digital products.</p>
-    <div class="cta-buttons">
-      <a href="contact.html"><button>📩 Request a Quote</button></a>
-      <a href="https://wa.me/919423131760" target="_blank"><button>💬 WhatsApp</button></a>
-    </div>
-  </header>
+  <!-- ✅ Page Banner -->
+  <section class="hero page-banner">
+    <h1>Contact Us</h1>
+    <p>Let’s connect and discuss your project idea.</p>
+  </section>
 
-  <!-- ✅ Why Choose Us -->
-  <section id="why-us">
-    <h2>Why Choose Us?</h2>
-    <div class="why-container">
-      <div class="why-card">✅ 100% Client Satisfaction</div>
-      <div class="why-card">🚀 Fast Delivery</div>
-      <div class="why-card">💬 Lifetime Support</div>
-      <div class="why-card">💰 Affordable Pricing</div>
+  <!-- ✅ Contact Form -->
+  <section class="contact-section">
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="contact-details">
+      <p>📱 WhatsApp: <a href="https://wa.me/919423131760" target="_blank">Chat Now</a></p>
+      <p>📧 Email: <a href="mailto:dhanishatek@gmail.com">dhanishatek@gmail.com</a></p>
     </div>
   </section>
 
@@ -55,6 +58,14 @@
     </div>
     <p>&copy; 2025 Dhanisha Tech. All rights reserved.</p>
   </footer>
+
+  <!-- ✅ Logout Script -->
+  <script>
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "login.html";
+    }
+  </script>
 
 </body>
 </html>
