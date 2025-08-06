@@ -51,6 +51,10 @@ body {
   color: white;
 }
 
+.nav-links li a.active {
+  background: #00b894;
+}
+
 /* ========= Hero Section ========== */
 .hero {
   background: linear-gradient(to right, #e0f7fa, #ffffff);
@@ -84,13 +88,32 @@ body {
   background: #019875;
 }
 
-/* ========= Footer ========== */
-footer {
+/* ========= Why Choose Us Section ========== */
+#why-us {
+  padding: 50px 20px;
   text-align: center;
+  background-color: #ffffff;
+}
+
+#why-us h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.why-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.why-card {
+  background: #f8f9fa;
   padding: 20px;
-  background: #222;
-  color: white;
-  margin-top: 40px;
+  width: 250px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 16px;
 }
 
 /* ========= Contact Form ========== */
@@ -130,6 +153,44 @@ footer {
   background: #0077cc;
 }
 
+.contact-details {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.contact-details a {
+  color: #00b894;
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  text-decoration: underline;
+}
+
+/* ========= Footer ========== */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #222;
+  color: white;
+  margin-top: 40px;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #ccc;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
 /* ========= Responsive ========== */
 @media (max-width: 768px) {
   .nav-links {
@@ -145,6 +206,11 @@ footer {
 
   .cta-buttons {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .why-container {
     flex-direction: column;
     align-items: center;
   }
