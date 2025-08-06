@@ -23,6 +23,28 @@
     <p>We build Android Apps, Websites, and Desktop Software.</p>
   </main>
 
+  <!-- ✅ Step 3: Our Services Section -->
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="services-container">
+      <div class="service-card">
+        <div class="icon">📱</div>
+        <h3>Android App Dev</h3>
+        <p>Modern, secure & custom solutions</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">🌐</div>
+        <h3>Website Dev</h3>
+        <p>Responsive & SEO friendly</p>
+      </div>
+      <div class="service-card">
+        <div class="icon">💻</div>
+        <h3>Desktop Software</h3>
+        <p>Fast and reliable desktop tools</p>
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
     <h2>Contact Us</h2>
     <p>Feel free to message us on WhatsApp, Email, or via the form below.</p>
@@ -50,45 +72,45 @@
     <p>&copy; 2025 Dhanisha Tech</p>
   </footer>
 
-  <!-- ✅ Final EmailJS + Auto-reply + Google Sheet (Fixed Order) -->
+  <!-- ✅ Final EmailJS + Auto-reply + Google Sheet -->
   <script>
     const form = document.getElementById('contact-form');
 
     form.addEventListener('submit', function (event) {
-  event.preventDefault();
+      event.preventDefault();
 
-  const formData = new FormData(form);
-  const userEmail = formData.get("email");
-  const userName = formData.get("name");
+      const formData = new FormData(form);
+      const userEmail = formData.get("email");
+      const userName = formData.get("name");
 
-  // ✅ Google Sheet fetch (first!)
-  const encodedData = new URLSearchParams(formData);
-  fetch("https://script.google.com/macros/s/AKfycbyMeQG4ORBi7nbgRgwroP0u5V3edFePLyZtwU32jrUA8dLQjb8z0opcvPjTh4YIwTxO/exec", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body: encodedData.toString()
-  })
-  .then(res => res.text())
-  .then(txt => console.log("📄 Google Sheet Response:", txt))
-  .catch(err => console.error("❌ Google Sheet Error:", err));
+      // ✅ Google Sheet save
+      const encodedData = new URLSearchParams(formData);
+      fetch("https://script.google.com/macros/s/AKfycbyMeQG4ORBi7nbgRgwroP0u5V3edFePLyZtwU32jrUA8dLQjb8z0opcvPjTh4YIwTxO/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: encodedData.toString()
+      })
+      .then(res => res.text())
+      .then(txt => console.log("📄 Google Sheet Response:", txt))
+      .catch(err => console.error("❌ Google Sheet Error:", err));
 
-  // ✅ EmailJS Message
-  emailjs.sendForm('service_178rdz5', 'template_yf0tfur', form)
-    .then(function () {
-      alert('✅ Message sent successfully!');
-      form.reset();
-    }, function (error) {
-      alert('❌ Failed to send message: ' + JSON.stringify(error));
+      // ✅ EmailJS send
+      emailjs.sendForm('service_178rdz5', 'template_yf0tfur', form)
+        .then(() => {
+          alert('✅ Message sent successfully!');
+          form.reset();
+        }, error => {
+          alert('❌ Failed to send message: ' + JSON.stringify(error));
+        });
+
+      // ✅ Auto-reply
+      emailjs.send("service_178rdz5", "template_m6hsfmr", {
+        email: userEmail,
+        to_name: userName
+      });
     });
-
-  // ✅ Auto-reply
-  emailjs.send("service_178rdz5", "template_m6hsfmr", {
-    email: userEmail,
-    to_name: userName
-  });
-});
   </script>
 </body>
 </html>
