@@ -1,1 +1,151 @@
-/* CSS Started */
+/* ========= Base ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ========= Navbar ========== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #222;
+  padding: 15px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #00b894;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.nav-links li a:hover,
+.login-btn {
+  background: #00b894;
+  color: white;
+}
+
+/* ========= Hero Section ========== */
+.hero {
+  background: linear-gradient(to right, #e0f7fa, #ffffff);
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.cta-buttons button {
+  background: #00b894;
+  border: none;
+  padding: 12px 20px;
+  margin: 8px;
+  color: white;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cta-buttons button:hover {
+  background: #019875;
+}
+
+/* ========= Footer ========== */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #222;
+  color: white;
+  margin-top: 40px;
+}
+
+/* ========= Contact Form ========== */
+.contact-section {
+  background: white;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.contact-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact-section input,
+.contact-section textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact-section button {
+  background: #0984e3;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.contact-section button:hover {
+  background: #0077cc;
+}
+
+/* ========= Responsive ========== */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    background: #333;
+    padding: 10px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .cta-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
