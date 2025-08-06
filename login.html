@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login – Dhanisha Tech</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">🌀 Dhanisha Tech</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="offers.html">Offers</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="login.html" class="active login-btn">🔐 Login</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-banner">
+    <h1>Login</h1>
+    <p>Choose your role and sign in to your dashboard.</p>
+  </div>
+
+  <section class="login-section">
+    <form class="login-form">
+      <label for="role">Select Role:</label>
+      <select id="role" required>
+        <option value="">-- Choose --</option>
+        <option value="client">👨‍💼 Client</option>
+        <option value="freelancer">👨‍💻 Freelancer</option>
+        <option value="admin">🧑‍💼 Admin</option>
+      </select>
+
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>&copy; 2025 Dhanisha Tech. All rights reserved.</p>
+  </footer>
+</body>
+</html>
