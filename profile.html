@@ -5,29 +5,38 @@
   <title>User Profile – Dhanisha Tech</title>
   <link rel="stylesheet" href="css/style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- 🔐 Role-check -->
+  <script src="js/auth-check.js"></script>
 </head>
 <body>
+
+  <!-- ✅ Navbar -->
   <nav class="navbar">
     <div class="logo">🌀 Dhanisha Tech</div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="contact.html">Contact</a></li>
+      <!-- Dynamic links will be added here -->
       <li><a href="#" class="login-btn" onclick="logout()">🚪 Logout</a></li>
     </ul>
   </nav>
 
+  <!-- ✅ Page Banner -->
   <div class="page-banner">
     <h1>👤 Profile</h1>
     <p>Welcome to your dashboard</p>
   </div>
 
+  <!-- ✅ Profile Details -->
   <section class="login-section">
     <div id="profileContent">
       <!-- Profile data will be injected here -->
     </div>
   </section>
 
+  <!-- ✅ Footer -->
   <footer>
     <div class="footer-links">
       <a href="about.html">About</a>
@@ -37,6 +46,7 @@
     <p>&copy; 2025 Dhanisha Tech. All rights reserved.</p>
   </footer>
 
+  <!-- ✅ Script -->
   <script>
     const user = JSON.parse(localStorage.getItem("loggedInUser"));
 
@@ -44,11 +54,26 @@
       alert("Please login first.");
       window.location.href = "login.html";
     } else {
+      // Show profile data
       document.getElementById("profileContent").innerHTML = `
         <p><strong>Name:</strong> ${user.name}</p>
         <p><strong>Email:</strong> ${user.email}</p>
         <p><strong>Role:</strong> ${user.role}</p>
       `;
+
+      // Role-based navigation link
+      const navLinks = document.getElementById("navLinks");
+      const roleLink = document.createElement("li");
+
+      if (user.role === "Client") {
+        roleLink.innerHTML = `<a href="orders.html">📦 My Orders</a>`;
+      } else if (user.role === "Freelancer") {
+        roleLink.innerHTML = `<a href="deliverables.html">📥 My Deliverables</a>`;
+      } else if (user.role === "Admin") {
+        roleLink.innerHTML = `<a href="assign-projects.html">🧑‍💼 Assign Projects</a>`;
+      }
+
+      navLinks.insertBefore(roleLink, navLinks.children[3]); // Add before logout
     }
 
     function logout() {
@@ -56,5 +81,6 @@
       window.location.href = "login.html";
     }
   </script>
+
 </body>
 </html>
