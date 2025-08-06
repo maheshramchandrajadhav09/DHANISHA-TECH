@@ -16,7 +16,7 @@ document.getElementById("authForm").addEventListener("submit", function (e) {
   const existingUser = users.find(u => u.email === email);
 
   if (authType === "login") {
-    if (!existingUser || existingUser.password !== password) {
+    if (!existingUser || existingUser.password !== password || existingUser.role !== role) {
       alert("Invalid credentials or user not registered.");
       return;
     }
