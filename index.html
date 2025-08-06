@@ -2,17 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Dhanisha Tech</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Dhanisha Tech – Home</title>
+  <link rel="stylesheet" href="css/style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- ✅ EmailJS CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script>
-    (function () {
-      emailjs.init("C-9BlXYsILjx5Qmm7");
-    })();
-  </script>
 </head>
 
 <body>
@@ -20,106 +12,47 @@
   <nav class="navbar">
     <div class="logo">🌀 Dhanisha Tech</div>
     <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#offers">Offers</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="offers.html">Offers</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
       <li><a href="login.html" class="login-btn">🔐 Login</a></li>
     </ul>
   </nav>
 
-  <!-- ✅ Hero Section -->
-  <header class="hero" id="home">
+  <!-- ✅ Hero -->
+  <header class="hero">
     <h1>Smart Software Solutions for <span class="highlight">Android, Web & SaaS</span></h1>
     <p>We build, deliver, and support powerful digital products.</p>
     <div class="cta-buttons">
-      <a href="#contact"><button>📩 Request a Quote</button></a>
+      <a href="contact.html"><button>📩 Request a Quote</button></a>
       <a href="https://wa.me/919423131760" target="_blank"><button>💬 Message on WhatsApp</button></a>
     </div>
   </header>
 
-  <!-- ✅ Services Section -->
-  <section id="services">
-    <h2>Our Services</h2>
-    <div class="services-container">
-      <div class="service-card">
-        <div class="icon">📱</div>
-        <h3>Android App Dev</h3>
-        <p>Modern, secure & custom solutions</p>
-      </div>
-      <div class="service-card">
-        <div class="icon">🌐</div>
-        <h3>Website Dev</h3>
-        <p>Responsive & SEO friendly</p>
-      </div>
-      <div class="service-card">
-        <div class="icon">💻</div>
-        <h3>Desktop Software</h3>
-        <p>Fast and reliable desktop tools</p>
-      </div>
+  <!-- ✅ Highlights -->
+  <section id="why-us">
+    <h2>Why Choose Us?</h2>
+    <div class="why-container">
+      <div class="why-card">✅ 100% Client Satisfaction</div>
+      <div class="why-card">🚀 Fast Delivery</div>
+      <div class="why-card">💬 Lifetime Support</div>
+      <div class="why-card">💰 Affordable Pricing</div>
     </div>
   </section>
 
-  <!-- ✅ Contact Us Section -->
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>Feel free to message us on WhatsApp, Email, or via the form below.</p>
-
-    <div class="contact-buttons">
-      <a href="https://wa.me/919423131760" target="_blank"><button>📱 WhatsApp Us</button></a>
-      <span> - </span>
-      <a href="mailto:dhanishatek@gmail.com?subject=Project%20Inquiry&body=Hello%20Dhanisha%20Tech,"><button>📧 Email Us</button></a>
-    </div>
-
-    <form id="contact-form">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <input type="text" name="title" placeholder="Subject" required />
-      <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
+  <!-- ✅ Footer -->
   <footer>
-    <p>&copy; 2025 Dhanisha Tech</p>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <p>&copy; 2025 Dhanisha Tech. All rights reserved.</p>
   </footer>
-
-  <!-- ✅ Google Sheet + EmailJS Script -->
-  <script>
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-
-      const formData = new FormData(form);
-      const userEmail = formData.get("email");
-      const userName = formData.get("name");
-
-      const encodedData = new URLSearchParams(formData);
-      fetch("https://script.google.com/macros/s/AKfycbyMeQG4ORBi7nbgRgwroP0u5V3edFePLyZtwU32jrUA8dLQjb8z0opcvPjTh4YIwTxO/exec", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encodedData.toString()
-      })
-      .then(res => res.text())
-      .then(txt => console.log("📄 Google Sheet Response:", txt))
-      .catch(err => console.error("❌ Google Sheet Error:", err));
-
-      emailjs.sendForm('service_178rdz5', 'template_yf0tfur', form)
-        .then(() => {
-          alert('✅ Message sent successfully!');
-          form.reset();
-        }, error => {
-          alert('❌ Failed to send message: ' + JSON.stringify(error));
-        });
-
-      emailjs.send("service_178rdz5", "template_m6hsfmr", {
-        email: userEmail,
-        to_name: userName
-      });
-    });
-  </script>
 </body>
 </html>
