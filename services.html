@@ -7,9 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
+
+  <!-- ✅ Navbar -->
   <nav class="navbar">
     <div class="logo">🌀 Dhanisha Tech</div>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
       <li><a href="services.html" class="active">Services</a></li>
       <li><a href="portfolio.html">Portfolio</a></li>
@@ -17,15 +19,18 @@
       <li><a href="pricing.html">Pricing</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="login.html" class="login-btn">🔐 Login</a></li>
+      <li><a href="login.html" class="login-btn" id="loginBtn">🔐 Login</a></li>
+      <li><a href="#" style="display:none;" id="logoutBtn" onclick="logout()">🚪 Logout</a></li>
     </ul>
   </nav>
 
+  <!-- ✅ Page Banner -->
   <div class="page-banner">
     <h1>Our Services</h1>
     <p>Explore what we offer for your business success.</p>
   </div>
 
+  <!-- ✅ Services List -->
   <section class="services-container">
     <div class="service-card">
       <div class="icon">📱</div>
@@ -44,6 +49,7 @@
     </div>
   </section>
 
+  <!-- ✅ Footer -->
   <footer>
     <div class="footer-links">
       <a href="about.html">About</a>
@@ -53,5 +59,32 @@
     </div>
     <p>&copy; 2025 Dhanisha Tech. All rights reserved.</p>
   </footer>
+
+  <!-- ✅ Script -->
+  <script>
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    const navLinks = document.getElementById("navLinks");
+
+    if (user) {
+      document.getElementById("loginBtn").style.display = "none";
+      document.getElementById("logoutBtn").style.display = "inline-block";
+
+      const roleLink = document.createElement("li");
+      if (user.role === "Client") {
+        roleLink.innerHTML = `<a href="orders.html">📦 My Orders</a>`;
+      } else if (user.role === "Freelancer") {
+        roleLink.innerHTML = `<a href="deliverables.html">📥 My Deliverables</a>`;
+      } else if (user.role === "Admin") {
+        roleLink.innerHTML = `<a href="assign-projects.html">🧑‍💼 Assign Projects</a>`;
+      }
+      navLinks.insertBefore(roleLink, document.getElementById("logoutBtn").parentElement);
+    }
+
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "login.html";
+    }
+  </script>
+
 </body>
 </html>
