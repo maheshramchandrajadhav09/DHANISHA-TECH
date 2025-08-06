@@ -215,3 +215,44 @@ footer {
     align-items: center;
   }
 }
+/* ========= Login Section ========== */
+.login-section {
+  background: white;
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form label {
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.login-form select,
+.login-form input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-form button {
+  padding: 12px;
+  background-color: #00b894;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: #019875;
+}
+
