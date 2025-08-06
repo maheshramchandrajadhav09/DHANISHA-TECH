@@ -46,13 +46,20 @@ body {
 }
 
 .nav-links li a:hover,
-.login-btn {
+.nav-links li a.login-btn:hover {
   background: #00b894;
   color: white;
 }
 
 .nav-links li a.active {
   background: #00b894;
+}
+
+.login-btn {
+  background: #00b894;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 5px;
 }
 
 /* ========= Hero Section ========== */
@@ -215,6 +222,7 @@ footer {
     align-items: center;
   }
 }
+
 /* ========= Login Section ========== */
 .login-section {
   background: white;
@@ -255,4 +263,3 @@ footer {
 .login-form button:hover {
   background-color: #019875;
 }
-
