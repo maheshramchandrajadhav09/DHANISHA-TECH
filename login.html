@@ -2,61 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Login – Dhanisha Tech</title>
+  <title>Login / Sign Up – Dhanisha Tech</title>
   <link rel="stylesheet" href="css/style.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
-
 <body>
-
-  <!-- ✅ Navbar -->
   <nav class="navbar">
     <div class="logo">🌀 Dhanisha Tech</div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="services.html">Services</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="offers.html">Offers</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="login.html" class="active login-btn">🔐 Login</a></li>
     </ul>
   </nav>
 
-  <!-- ✅ Page Banner -->
-  <section class="hero page-banner">
-    <h1>Login</h1>
-    <p>Choose your role and sign in to your dashboard.</p>
-  </section>
+  <div class="page-banner">
+    <h1>Welcome</h1>
+    <p>Please login or create an account</p>
+  </div>
 
-  <!-- ✅ Login Form -->
   <section class="login-section">
-    <form class="login-form">
+    <form class="login-form" id="authForm">
+      <label for="authType">Action:</label>
+      <select id="authType" required>
+        <option value="login">Login</option>
+        <option value="signup">Sign Up</option>
+      </select>
+
       <label for="role">Select Role:</label>
       <select id="role" required>
         <option value="">-- Choose --</option>
-        <option value="client">👨‍💼 Client</option>
-        <option value="freelancer">👨‍💻 Freelancer</option>
-        <option value="admin">🧑‍💼 Admin</option>
+        <option value="Client">👨‍💼 Client</option>
+        <option value="Freelancer">👨‍💻 Freelancer</option>
+        <option value="Admin">🧑‍💼 Admin</option>
       </select>
 
-      <input type="email" placeholder="Email" required />
-      <input type="password" placeholder="Password" required />
-      <button type="submit">Login</button>
+      <input type="text" id="name" placeholder="Name (Signup only)" />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Continue</button>
     </form>
   </section>
 
-  <!-- ✅ Footer -->
   <footer>
     <div class="footer-links">
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
-      <a href="portfolio.html">Portfolio</a>
       <a href="contact.html">Contact</a>
     </div>
     <p>&copy; 2025 Dhanisha Tech. All rights reserved.</p>
   </footer>
 
+  <script src="js/login.js"></script>
 </body>
 </html>
